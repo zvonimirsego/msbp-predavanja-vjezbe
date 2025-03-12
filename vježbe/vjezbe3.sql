@@ -102,3 +102,18 @@ VALUES
 (6, 4, 'predavac');
 SELECT * FROM djelatnik_izvedbeni;
 COMMIT;
+
+UPDATE kolegij
+SET ects = 9
+WHERE kolegij_id = 'M084';
+
+INSERT INTO kolegij (kolegij_id, naziv, p, v, s, ects)
+VALUES
+('M106', 'Teorija brojeva', 1, 1, 0, 3);
+SELECT * FROM kolegij;
+
+DELETE FROM kolegij
+WHERE kolegij_id = 'M106';
+
+SELECT * FROM kolegij;
+COMMIT;
