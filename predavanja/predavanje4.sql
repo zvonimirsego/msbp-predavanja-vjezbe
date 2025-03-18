@@ -226,3 +226,81 @@ SELECT ime, prezime FROM kupac ORDER BY ime DESC;
 SELECT ime, prezime FROM kupac ORDER BY prezime, ime DESC; --sortira uzlazno po prezimenu, po imenu silazno.
 
 SELECT * FROM kupac ORDER BY 3, 2; --sortira po 3. i 2. stupcu
+
+SELECT *
+FROM kupac
+LIMIT 5;
+
+SELECT *
+FROM kupac
+OFFSET 2
+LIMIT 5;
+
+SELECT *
+FROM kupac
+FETCH FIRST 5 ROW ONLY;
+
+SELECT *
+FROM kupac
+OFFSET 2
+FETCH FIRST 5 ROW ONLY;
+
+SELECT * FROM proizvod
+WHERE proizvod_id = 3;
+
+SELECT * FROM vrsta_proizvoda
+WHERE vrsta_proizvoda_id = 1;
+
+SELECT proizvod.naziv, vrsta_proizvoda.naziv
+FROM proizvod, vrsta_proizvoda
+WHERE proizvod.vrsta_proizvoda_id = vrsta_proizvoda.vrsta_proizvoda_id and proizvod_id = 3
+ORDER BY proizvod.naziv;
+
+SELECT p.naziv, vp.naziv
+FROM proizvod p, vrsta_proizvoda vp
+WHERE p.vrsta_proizvoda_id = vp.vrsta_proizvoda_id
+ORDER BY p.naziv;
+
+SELECT * FROM proizvod
+WHERE vrsta_proizvoda_id IS NULL;
+
+SELECT p.naziv
+FROM proizvod p;
+
+SELECT vp.naziv
+FROM vrsta_proizvoda vp;
+
+SELECT p.naziv, vp.naziv
+FROM proizvod p, vrsta_proizvoda vp; --kartezijev produkt
+
+SELECT k.ime, k.prezime, p.naziv, vp.naziv
+FROM kupac k, proizvod p, vrsta_proizvoda vp, kupovina kp
+WHERE k.kupac_id = kp.kupac_id
+AND p.proizvod_id = kp.proizvod_id
+AND p.vrsta_proizvoda_id = vp.vrsta_proizvoda_id
+ORDER BY k.prezime, k.ime; --ovaj red je estetski
+
+SELECT * FROM visina_place;
+SELECT * FROM zaposlenik;
+
+SELECT z.ime, z.prezime, z.placa, vp.niska_placa, vp.visoka_placa, vp.visina_place_id
+FROM visina_place vp, zaposlenik z
+WHERE z.placa BETWEEN vp.niska_placa AND vp.visoka_placa;
+
+SELECT p.naziv, vp.naziv
+FROM proizvod p INNER JOIN vrsta_proizvoda vp
+ON p.vrsta_proizvoda_id = vp.vrsta_proizvoda_id
+ORDER BY p.naziv;
+
+SELECT p.naziv, vp.naziv, vrsta_proizvoda_id --tu se moze i specificarti u kojoj je tablici, dok se u oracle ne moze
+FROM proizvod p INNER JOIN vrsta_proizvoda vp
+USING (vrsta_proizvoda_id);
+
+SELECT k.ime, k.prezime, p.naziv, vp.naziv
+FROM kupac k INNER JOIN kupovina kp
+USING (kupac_id)
+INNER JOIN proizvod p
+USING (proizvod_id)
+INNER JOIN vrsta_proizvoda vp
+USING (vrsta_proizvoda_id)
+ORDER BY k.prezime, k.ime; --ovaj red je estetski
