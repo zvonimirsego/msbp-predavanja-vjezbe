@@ -62,7 +62,7 @@ ORDER BY d.prezime, d.ime;
 -- Ispišite sve nazive kolegija koji se održavaju i u zimskom i u ljetnom semestru (ne u samo jednom od njih) zajedno s 
 -- ukupnim ECTS bodovima koji nose. Rezultate poredajte po ukupnom broju ECTS bodova 
 -- (Napomena: u tablici kolegij ECTS -- bodovi sadrže broj bodova u jednom semestru.)
-SELECT k.naziv, k.ects
+SELECT DISTINCT k.naziv, k.ects
 FROM kolegij k 
 INNER JOIN studijski_program sp USING (kolegij_id)
 INNER JOIN izvedbeni_plan ip USING (st_prg_id)
