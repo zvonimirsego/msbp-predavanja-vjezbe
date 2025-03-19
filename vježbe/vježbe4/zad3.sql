@@ -33,17 +33,20 @@ INSERT INTO EMPLOYEE (EMPLOYEE_ID, NAME, EMAIL, SALARY, DEPTNO) VALUES
 (5, 'Petra Parks', 'petra@gmail.com', 2311, 30),
 (6, 'Sarah Clarkson', 'sarah33@gmail.com', 3400, 10),
 (7, 'Emanuel Oz', 'emanuel@gmail.com', 2000, 20);
-
+COMMIT;
 
 -- Ispišite imena zaposlenika, nazive odjela i lokaciju odjela na kojima rade koristeći
 -- kartezijev produkt i unutarnji spoj (inner join).
 
 -- kartezijev
-
+SELECT e.name, d.name, d.loc
+FROM department d, employee e
+WHERE d.deptno = e.deptno;
 
 -- inner join
-
-
+SELECT e.name, d.name, d.loc
+FROM department d INNER JOIN employee e
+USING (deptno);
 
 
 
