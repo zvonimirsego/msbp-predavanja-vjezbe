@@ -76,7 +76,7 @@ FROM kolegij k
 INNER JOIN studijski_program sp USING (kolegij_id)
 INNER JOIN izvedbeni_plan ip USING (st_prg_id)
 WHERE k.ects > 4 AND ip.br_grupa IS NULL;
-
+COMMIT;
 
 
 
