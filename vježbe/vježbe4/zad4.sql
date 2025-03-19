@@ -6,9 +6,21 @@
 -- rezultatima pojavljuje u svakom redu)
 
 -- Sa =
+SELECT vs.naziv, k.naziv, sp.godina
+FROM vrsta_studija vs, studijski_program sp, kolegij k
+WHERE vs.vrsta_studija_id = sp.vrsta_studija_id
+AND k.kolegij_id = sp.kolegij_id
+AND sp.obvezni = 1
+ORDER BY vs.naziv, k.naziv;
 
 -- Sa inner join
-
+SELECT vs.naziv, k.naziv, sp.godina
+FROM studijski_program sp INNER JOIN kolegij k
+USING (kolegij_id)
+INNER JOIN vrsta_studija vs
+USING (vrsta_studija_id)
+WHERE sp.obvezni = 1
+ORDER BY vs.naziv, k.naziv;
 
 -- B
 -- Ispišite nazive svih kolegija koje se izvode u zimskom semestru na prvoj godini preddiplomskog studija Matematike i 

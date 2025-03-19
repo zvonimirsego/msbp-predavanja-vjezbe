@@ -47,6 +47,7 @@ WHERE d.deptno = e.deptno;
 SELECT e.name, d.name, d.loc
 FROM department d INNER JOIN employee e
 USING (deptno);
+COMMIT;
 
 
 
