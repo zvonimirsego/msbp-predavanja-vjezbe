@@ -10,7 +10,7 @@ WHERE (naziv LIKE 'M%a') OR (naziv LIKE '%m%m%');
 
 -- B
 -- Iz tablice kolegij ispišite nazive svih kolegija zajedno s ukupnom tjednom satnicom i ECTS bodovima (napomena: ukupna satnica je jednaka zbroju tjednih sati predavanja, vjezbi i seminara)
-SELECT naziv, p+v+s AS satnica, ects
+SELECT naziv, p+v+s AS "tjedna satnica", ects
 FROM KOLEGIJ;
 
 -- C
