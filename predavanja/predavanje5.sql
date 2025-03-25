@@ -136,4 +136,5 @@ FROM proizvod);
 
 SELECT avg(cijena)
 FROM proizvod
-WHERE
+WHERE;
+COMMIT;
